@@ -14,17 +14,38 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Metadata } from "next";
 
 type BlogDetailsPageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
-export default async function BlogDetailsPage(params: BlogDetailsPageProps) {
-  const { id } = params.params;
+
+export const generateMetadata = async ({
+  params,
+}: BlogDetailsPageProps): Promise<Metadata> => {
+  const { id } = await params;
 
   const res = await fetch("https://shrimo.com/fake-api/blog");
-  const data: { blogs: Blog[] } = await res.json();
+  const data: { blogs: Blog } = await res.json();
+
+  const blog: Blog | null = data.blogs.find((item) => item._id === id) ?? null;
+
+  return {
+    title: blog?.title,
+    description: blog?.content,
+    creator: "Vikas Meshram",
+  };
+};
+
+export default async function BlogDetailsPage({
+  params,
+}: BlogDetailsPageProps) {
+  const { id } = await params;
+
+  const res = await fetch("https://shrimo.com/fake-api/blog");
+  const data: { blogs: Blog } = await res.json();
 
   const blog: Blog | null = data.blogs.find((item) => item._id === id) ?? null;
 
