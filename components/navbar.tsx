@@ -14,11 +14,11 @@ import {
 export default function Navbar() {
   return (
     <nav className="w-full border-b drop-shadow">
-      <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
         <Link href="/">
           <h1 className="text-xl font-bold">Vikas Blogs</h1>
         </Link>
-        <ul className="hidden lg:flex items-center gap-3">
+        <ul className="hidden text-xs lg:flex items-center gap-3">
           <li>Home</li>
           <li>Contact</li>
           <li>About Us</li>

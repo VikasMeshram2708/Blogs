@@ -1,6 +1,6 @@
-import { defineField, defineType } from "sanity";
+import { defineField, defineType, SchemaTypeDefinition } from "sanity";
 
-export const blogType = defineType({
+export const blogType: SchemaTypeDefinition = defineType({
   name: "blog",
   title: "Blog",
   description: "Blogs",
@@ -24,7 +24,20 @@ export const blogType = defineType({
       title: "Content",
       name: "content",
       type: "array",
-      of: [{ type: "block" }],
+      of: [
+        { type: "block" },
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            {
+              title: "Content Image",
+              name: "contentImage",
+              type: "string",
+            },
+          ],
+        },
+      ],
     }),
     defineField({
       title: "Image",

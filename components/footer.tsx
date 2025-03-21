@@ -14,7 +14,11 @@ export default function Footer() {
             {socialLinks &&
               socialLinks?.map((social) => (
                 <li key={social.href}>
-                  <a href={social.href} className="capitalize text-xs">
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    className="capitalize text-xs"
+                  >
                     {social.icon}
                   </a>
                 </li>
