@@ -11,9 +11,9 @@ export default function BlogImage({
 }) {
   return (
     <Image
-      className="object-cover"
+      className="object-cover  rounded"
       width={500}
-      height={500}
+      height={350}
       src={urlFor(url).url()}
       alt={title}
     />

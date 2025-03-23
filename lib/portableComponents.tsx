@@ -1,16 +1,18 @@
 import { urlFor } from "@/sanity/lib/image";
 import { PortableTextComponents } from "@portabletext/react";
-import { Image } from "next-sanity/image";
+import Image from "next/image";
 
 export const portableTextComponents: PortableTextComponents = {
   // Custom rendering for images
   types: {
     image: ({ value }: { value: any }) => (
       <div className="my-8 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
-        <img
+        <Image
           src={urlFor(value).url()}
           // src={value?.asset?.url || ""}
           alt={value?.alt || "Blog Image"}
+          width={500}
+          height={350}
           className="w-full h-auto object-cover"
         />
         {value?.caption && (

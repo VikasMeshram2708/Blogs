@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
+import { navItems } from "@/data";
 
 export default function Navbar() {
   return (
@@ -19,10 +20,12 @@ export default function Navbar() {
           <h1 className="text-xl font-bold">Vikas Blogs</h1>
         </Link>
         <ul className="hidden text-xs lg:flex items-center gap-3">
-          <li>Home</li>
-          <li>Contact</li>
-          <li>About Us</li>
-          <li>Privacy Policy</li>
+          {Array.isArray(navItems) &&
+            navItems?.map((item) => (
+              <Link key={item.href} href={item.href}>
+                <li className="capitalize">{item.title}</li>
+              </Link>
+            ))}
         </ul>
         <Button
           className="cursor-pointer hidden lg:flex items-center gap-2"
@@ -46,10 +49,12 @@ export default function Navbar() {
               </SheetTitle>
             </SheetHeader>
             <ul className="p-5 flex flex-col gap-4">
-              <li>Home</li>
-              <li>Contact</li>
-              <li>About Us</li>
-              <li>Privacy Policy</li>
+              {Array.isArray(navItems) &&
+                navItems?.map((item) => (
+                  <Link key={item.href} href={item.href}>
+                    <li className="capitalize">{item.title}</li>
+                  </Link>
+                ))}
             </ul>
             <SheetFooter>
               <Button className="cursor-pointer" variant={"outline"}>

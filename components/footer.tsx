@@ -10,7 +10,7 @@ export default function Footer() {
           <Link href="/">
             <h1 className="text-xl md:text-2xl lg:text-3xl">Vikas Blogs</h1>
           </Link>
-          <ul className="flex gap-2 py-2">
+          <ul className="flex gap-2 p-4">
             {socialLinks &&
               socialLinks?.map((social) => (
                 <li key={social.href}>

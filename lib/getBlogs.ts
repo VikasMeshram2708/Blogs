@@ -19,13 +19,13 @@ export async function getBlog({
   if (!blogId) return null;
 
   try {
-    console.log("Fetching blog with ID:", { blogId });
+    // console.log("Fetching blog with ID:", { blogId });
 
     // Use a parameterized query to prevent injection
     const query = groq`*[_type == "blog" && _id == $blogId][0]`;
     const blog = await client.fetch(query, { blogId });
 
-    console.log("Fetched blog:", { blog });
+    // console.log("Fetched blog:", { blog });
     return blog || null;
   } catch (error) {
     console.error("Error fetching blog:", error);

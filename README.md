@@ -1,10 +1,9 @@
 # Vikas Blogs
 
-## Sanity TypeGen
+## Todo
 
-$ cd ~/my-studio-folder
-$ sanity schema extract # outputs a `schema.json` file
-✔ Extracted schema
+- [] Add Author Sectoin in the bottom the dynamic page.
 
-$ sanity typegen generate
-✔ Generated TypeScript types for 2 schema types and 2 GROQ queries in 1 files into: ./sanity.types.ts
+- [] Show Content on the left hand side on the dynamic page.
+
+- [] NewLetter section on the right hand side on the dynamic page.

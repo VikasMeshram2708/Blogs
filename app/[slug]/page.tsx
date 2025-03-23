@@ -1,9 +1,9 @@
-import BlogImage from "@/components/home/blog-image";
 import { getBlog } from "@/lib/getBlogs";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import { portableTextComponents } from "@/lib/portableComponents";
 import BlogsHeader from "@/components/blogs/blogs-header";
+import { Metadata } from "next";
 
 type BlogParams = {
   params: Promise<{
@@ -13,6 +13,15 @@ type BlogParams = {
     uid: string;
   }>;
 };
+
+export async function generateMetadata(props: BlogParams): Promise<Metadata> {
+  const { uid } = await props.searchParams;
+  const blog = await getBlog({ blogId: decodeURIComponent(uid) });
+
+  return {
+    title: blog?.title,
+  };
+}
 
 export default async function Blog(props: BlogParams) {
   const { slug } = await props.params;
@@ -26,8 +35,7 @@ export default async function Blog(props: BlogParams) {
 
   return (
     <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900">
-      {/* <BlogsHeader title={blog?.title as string} /> */}
-      {/* <pre>{JSON.stringify(blog, null, 4)}</pre> */}
+      <BlogsHeader title={blog?.title as string} />
       <div className="max-w-3xl mx-auto px-4 lg:px-0 py-8">
         <div className="prose prose-lg max-w-none text-gray-800 dark:text-gray-200">
           <PortableText
