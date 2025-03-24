@@ -15,31 +15,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticPages = [
     {
-      url: "https://v-blogs.com",
+      url: "https://blogs-app-sage.vercel.app",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: "https://v-blogs.com/blogs",
+      url: "https://blogs-app-sage.vercel.app/blogs",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: "https://v-blogs.com/privacy",
+      url: "https://blogs-app-sage.vercel.app/privacy",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: "https://v-blogs.com/contact",
+      url: "https://blogs-app-sage.vercel.app/contact",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: "https://v-blogs.com/about",
+      url: "https://blogs-app-sage.vercel.app/about",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
@@ -48,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogPages = blogs.map(
     (blog: { slug: string; _updatedAt: string; _id: string }) => ({
-      url: `https://v-blogs.com/${blog.slug}?uid=${blog._id}`,
+      url: `https://blogs-app-sage.vercel.app/${blog.slug}?uid=${blog._id}`,
       lastModified: new Date(blog._updatedAt),
       changeFrequency: "weekly",
       priority: 0.7,

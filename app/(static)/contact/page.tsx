@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -16,30 +15,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader } from "lucide-react";
-
-const contactSchema = z.object({
-  name: z
-    .string()
-    .min(2, { message: "Name must be at least 2 characters." })
-    .max(100, { message: "Name cannot exceed 100 characters." })
-    .regex(/^[A-Za-z]+$/, {
-      message: "Name must contain alphabets only.",
-    }),
-  email: z
-    .string()
-    .min(5, { message: "Email is required." })
-    .max(100, { message: "Email is too long." })
-    .email({ message: "Please enter a valid email." }),
-  message: z
-    .string()
-    .min(2, { message: "Message must be at least 2 characters." })
-    .max(500, { message: "Message cannot exceed 500 characters." }),
-});
-
-type ContactSchema = z.infer<typeof contactSchema>;
+import { contactSchema } from "@/models/contact";
+import { toast } from "sonner";
 
 export default function Contact() {
-  const form = useForm<ContactSchema>({
+  const form = useForm<contactSchema>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "",
@@ -48,12 +28,29 @@ export default function Contact() {
     },
   });
 
-  const onSubmit = async (data: ContactSchema) => {
-    await new Promise((resolve) => {
-      console.log("data", data);
-      setTimeout(resolve, 3000);
-    });
-    form.reset();
+  const onSubmit = async (data: contactSchema) => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const json = await response.json();
+      // console.log({ json });
+
+      if (!response.ok || json.error) {
+        toast.error(json.error || "Failed");
+        return;
+      }
+      // reset the form
+      form.reset();
+      toast.success(json.message || "Submitted");
+      return response;
+    } catch (error) {
+      throw error;
+    }
   };
 
   return (
