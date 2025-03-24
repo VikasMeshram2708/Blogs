@@ -1,4 +1,4 @@
-import { getBlog } from "@/lib/getBlogs";
+import { getBlog, getBlogs } from "@/lib/getBlogs";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import { portableTextComponents } from "@/lib/portableComponents";
@@ -14,12 +14,21 @@ type BlogParams = {
   }>;
 };
 
+export async function generateStaticParams() {
+  const blogs = await getBlogs();
+  return (
+    blogs?.map((blog) => ({
+      slug: blog?.slug?.current || "blog slug",
+    })) ?? []
+  );
+}
+
 export async function generateMetadata(props: BlogParams): Promise<Metadata> {
   const { uid } = await props.searchParams;
   const blog = await getBlog({ blogId: decodeURIComponent(uid) });
 
   return {
-    title: blog?.title,
+    title: blog?.title || "Blog post",
   };
 }
 
