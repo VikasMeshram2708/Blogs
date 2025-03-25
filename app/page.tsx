@@ -3,6 +3,7 @@ import BlogImage from "@/components/home/blog-image";
 import Link from "next/link";
 import { getBlogs } from "@/lib/getBlogs";
 import { Skeleton } from "@/components/ui/skeleton";
+import HomeHeader from "@/components/home/home-header";
 
 export default async function Home() {
   const allBlogs = await getBlogs();
@@ -33,6 +34,7 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen w-full px-4 sm:px-6 lg:px-8">
+      <HomeHeader />
       <ul className="py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10 max-w-7xl mx-auto px-4">
         {allBlogs.map((blog) => (
           <Card
