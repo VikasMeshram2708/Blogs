@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getBlogs } from "@/lib/getBlogs";
 import { Skeleton } from "@/components/ui/skeleton";
 import HomeHeader from "@/components/home/home-header";
+import GetInTouch from "@/components/get-in-touch";
 
 export default async function Home() {
   const allBlogs = await getBlogs();
@@ -56,6 +57,9 @@ export default async function Home() {
           </Card>
         ))}
       </ul>
+      <div className="py-6 lg:py-12">
+        <GetInTouch />
+      </div>
     </div>
   );
 }

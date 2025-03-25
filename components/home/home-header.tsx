@@ -70,7 +70,7 @@ export default function HomeHeader() {
                 alt={slide.title}
                 fill
                 sizes="100vw"
-                className="object-cover"
+                className="max-w-full h-auto"
                 priority={idx === 0}
               />
               <div

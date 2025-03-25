@@ -11,7 +11,7 @@ export default function BlogImage({
 }) {
   return (
     <Image
-      className="object-cover  rounded"
+      className="rounded max-w-full h-auto"
       width={500}
       height={350}
       src={urlFor(url).url()}
