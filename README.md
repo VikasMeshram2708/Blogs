@@ -2,12 +2,16 @@
 
 ## Todo
 
-- [] Add Author Section in the bottom the dynamic page.
+- [x] Add Author Section in the bottom the dynamic page.
 
-- [] Show Content on the left hand side on the dynamic page.
+- [x] Add breadcrump
 
-- [] NewLetter section on the right hand side on the dynamic page.
+- [x] Show Content table on the left hand side on the dynamic page.
 
-- [] Privacy policy page add email and fix the city name.
+- [x] Newsletter section on the right hand side on the dynamic page.
 
-- [] Add database support for contact us page and give email feedback.
+- [*] Privacy policy page add email and fix the city name.
+
+- [x] Add database support for contact us page and give email feedback.
+
+- [] Generate Contact email contact@pashucare.com

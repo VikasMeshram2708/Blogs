@@ -1,15 +1,13 @@
 import { socialMediaLinks as socialLinks } from "@/data";
-import Link from "next/link";
 import React from "react";
+import { NavHeader } from "./navbar";
 
 export default function Footer() {
   return (
     <footer className="w-full bg-foreground text-muted p-5">
       <div className="max-w-7xl mx-auto px-4 lg:px-0 flex items-center justify-between">
         <section>
-          <Link href="/">
-            <h1 className="text-xl md:text-2xl lg:text-3xl">Vikas Blogs</h1>
-          </Link>
+          <NavHeader className="text-white" />
           <ul className="flex gap-2 p-4">
             {socialLinks &&
               socialLinks?.map((social) => (
@@ -30,8 +28,8 @@ export default function Footer() {
           <p>Pincode, 441110</p>
         </address>
       </div>
-      <p className="text-center text-sm">
-        Copyright &copy; Vikas Meshram {new Date().getFullYear()}
+      <p className="text-center text-sm text-gray-500">
+        &copy; {new Date().getFullYear()} Vikas Meshram. All rights reserved.
       </p>
     </footer>
   );

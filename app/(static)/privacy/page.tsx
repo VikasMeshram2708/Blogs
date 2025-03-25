@@ -3,8 +3,8 @@ import { groq, PortableText } from "next-sanity";
 import React from "react";
 import { Privacy } from "@/sanity.types";
 import { portableTextComponents } from "@/lib/portableComponents";
-import BlogsHeader from "@/components/blogs/blogs-header";
 import { TypedObject } from "sanity";
+import HeroHeader from "@/components/hero-header";
 
 export default async function PolicyPage() {
   async function getPolicy(): Promise<Privacy[] | null> {
@@ -20,8 +20,9 @@ export default async function PolicyPage() {
   const content: TypedObject[] = policyData?.[0]?.content ?? [];
 
   return (
-    <div className="min-h-screen w-full">
-      <BlogsHeader title="Privacy Policy" />
+    <div className="min-h-screen w-full relative">
+      <HeroHeader title="Privacy Policy" />
+      {/* <div className="bg-gradient-to-br from-rose-200 via-white to-rose-400 z-0 absolute top-0 opacity-50 bg-cyan-500 rounded-full w-[500px] h-[250px] blur-3xl"></div> */}
       <div className="max-w-3xl mx-auto p-5">
         {content.length > 0 ? (
           <PortableText value={content} components={portableTextComponents} />

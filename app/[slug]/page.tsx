@@ -2,8 +2,12 @@ import { getBlog, getBlogs } from "@/lib/getBlogs";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import { portableTextComponents } from "@/lib/portableComponents";
+
 import BlogsHeader from "@/components/blogs/blogs-header";
 import { Metadata } from "next";
+
+import Author from "@/components/author";
+import BlogsContentTable from "@/components/blogs/blogs-content-table";
 
 type BlogParams = {
   params: Promise<{
@@ -43,22 +47,25 @@ export default async function Blog(props: BlogParams) {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen w-full">
       <BlogsHeader title={blog?.title as string} />
-      <div className="max-w-3xl mx-auto px-4 lg:px-0 py-8">
-        <div className="prose prose-lg max-w-none text-gray-800 dark:text-gray-200">
+
+      <div className="flex flex-col lg:flex-row max-w-7xl mx-auto px-4 lg:px-8 py-8 gap-8">
+        {/* Left Column: Content Table */}
+        <aside className="w-full lg:w-1/4 hidden lg:block">
+          <BlogsContentTable blogId={uid} />
+        </aside>
+
+        {/* Main Content */}
+        <main className="w-full lg:w-3/4 max-w-none">
           <PortableText
             value={blog?.content || []}
             components={portableTextComponents}
           />
-        </div>
-
-        {/* <center className="py-5">
-          <BlogImage
-            title={blog?.title || ""}
-            url={(blog.image as string) || ""}
-          />
-        </center> */}
+          <div className="mt-12">
+            <Author />
+          </div>
+        </main>
       </div>
     </div>
   );

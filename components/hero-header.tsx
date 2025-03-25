@@ -13,25 +13,20 @@ type BlogsHeaderProps = {
   className?: string;
 };
 
-export default function BlogsHeader({ title, className }: BlogsHeaderProps) {
+export default function HeroHeader({ title, className }: BlogsHeaderProps) {
   return (
     <header
       className={cn(
-        "w-full flex flex-col text-muted bg-secondary relative",
-        "px-4 py-12 sm:py-16 md:py-20",
+        "w-full flex flex-col text-muted bg-secondary  relative",
+        "px-4 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32",
         className
       )}
     >
-      {/* Breadcrumb - centered and responsive */}
-      <div className="w-full max-w-5xl mx-auto mb-6 px-4 sm:px-6 lg:px-8">
+      <div className="absolute top-10 left-36">
         <Breadcrumb>
-          <BreadcrumbList className="flex flex-wrap gap-1 text-sm sm:text-base">
+          <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/blogs">Blogs</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
@@ -42,7 +37,7 @@ export default function BlogsHeader({ title, className }: BlogsHeaderProps) {
       </div>
 
       {/* Title centered */}
-      <div className="text-center max-w-3xl mx-auto px-2 sm:px-0">
+      <div className="text-center max-w-3xl mx-auto">
         <h1
           className={cn(
             "font-bold leading-tight text-gray-900 dark:text-white",

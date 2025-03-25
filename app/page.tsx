@@ -34,8 +34,11 @@ export default async function Home() {
   return (
     <div className="min-h-screen w-full px-4 sm:px-6 lg:px-8">
       <ul className="py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10 max-w-7xl mx-auto px-4">
-        {allBlogs.map((blog, idx) => (
-          <Card key={idx} className="border-none outline-none shadow-none p-0">
+        {allBlogs.map((blog) => (
+          <Card
+            key={blog._id}
+            className="border-none outline-none shadow-none p-0"
+          >
             <CardContent className="p-0">
               <BlogImage
                 title={blog.title || ""}
