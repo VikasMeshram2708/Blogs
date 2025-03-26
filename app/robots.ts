@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/studio/:path*", "/api/:path*"],
+        disallow: ["/studio", "/studio/:path*", "/api", "/api/:path*"],
       },
     ],
     sitemap: "https://pashucare.com/sitemap.xml",
