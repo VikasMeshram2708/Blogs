@@ -17,7 +17,7 @@ export default function HomeHeader() {
         "Professional veterinary services with a personal touch. Your pet's health and happiness are our top priorities.",
       cta: "Book an Appointment",
       bgOpacity: "bg-black/40",
-      url: "https://assets.grok.com/users/b67c3829-02a3-4beb-bb72-57a36d3c0a70/generated/1LRsB8MJo8KFi3rg/image.jpg",
+      url: "https://ik.imagekit.io/wciw9sobc/Pashucare/carousel/Compassionate%20Care%20for%20Your%20Beloved%20Pets?updatedAt=1742973363696",
     },
     {
       title: "24/7 Emergency Services",
@@ -25,7 +25,7 @@ export default function HomeHeader() {
         "Immediate care when you need it most. Our emergency team is always ready to help your pet in critical situations.",
       cta: "Emergency Contact",
       bgOpacity: "bg-black/50",
-      url: "https://assets.grok.com/users/b67c3829-02a3-4beb-bb72-57a36d3c0a70/generated/5WY9d6sEagZmO5ej/image.jpg",
+      url: "https://ik.imagekit.io/wciw9sobc/Pashucare/carousel/24_7%20Emergency%20Services?updatedAt=1742973120901",
     },
     {
       title: "Wellness & Preventive Care",
@@ -33,7 +33,7 @@ export default function HomeHeader() {
         "Regular check-ups to keep your pet healthy and prevent future health issues. Prevention is better than cure!",
       cta: "Learn More",
       bgOpacity: "bg-black/30",
-      url: "https://assets.grok.com/users/b67c3829-02a3-4beb-bb72-57a36d3c0a70/generated/Ia1C1Q88mzuQj1SN/image.jpg",
+      url: "https://ik.imagekit.io/wciw9sobc/Pashucare/carousel/Wellness%20&%20Preventive%20Care?updatedAt=1742973170837",
     },
     {
       title: "Advanced Surgical Procedures",
@@ -41,7 +41,7 @@ export default function HomeHeader() {
         "State-of-the-art surgical facilities with experienced veterinarians for your pet's complex medical needs.",
       cta: "Our Services",
       bgOpacity: "bg-black/40",
-      url: "https://assets.grok.com/users/b67c3829-02a3-4beb-bb72-57a36d3c0a70/generated/CJR48pPjC0bgItLY/image.jpg",
+      url: "https://ik.imagekit.io/wciw9sobc/Pashucare/carousel/Advanced%20Surgical%20Procedures?updatedAt=1742973241105",
     },
     {
       title: "Grooming & Spa Services",
@@ -49,7 +49,7 @@ export default function HomeHeader() {
         "Pamper your pet with our premium grooming services that keep them looking and feeling their best.",
       cta: "View Packages",
       bgOpacity: "bg-black/30",
-      url: "https://assets.grok.com/users/b67c3829-02a3-4beb-bb72-57a36d3c0a70/generated/cbhmqo2OVj3CtmmC/image.jpg",
+      url: "https://ik.imagekit.io/wciw9sobc/Pashucare/carousel/Grooming%20&%20Spa%20Services?updatedAt=1742973305053",
     },
     {
       title: "Pet Boarding Facilities",
@@ -57,7 +57,7 @@ export default function HomeHeader() {
         "Safe and comfortable boarding options when you're away. We treat your pets like family!",
       cta: "Reserve Now",
       bgOpacity: "bg-black/40",
-      url: "https://assets.grok.com/users/b67c3829-02a3-4beb-bb72-57a36d3c0a70/generated/syuXB9NQiFnbSCwH/image.jpg",
+      url: "https://ik.imagekit.io/wciw9sobc/Pashucare/carousel/Pet%20Boarding%20Facilities?updatedAt=1742973556592",
     },
   ];
 
@@ -66,13 +66,13 @@ export default function HomeHeader() {
       <Carousel className="rounded-xl overflow-hidden shadow-xl">
         <CarouselContent>
           {slides.map((slide, idx) => (
-            <CarouselItem key={idx} className="relative w-full">
-              <div className="relative w-full min-h-[300px] md:min-h-[500px] lg:min-h-[650px]">
+            <CarouselItem key={idx} className="">
+              <div className="relative aspect-video">
                 <Image
                   src={slide.url}
                   alt={slide.title}
                   fill
-                  className="object-cover"
+                  className="object-cover max-w-full h-auto"
                   priority={idx === 0}
                 />
                 {/* Gradient overlay */}
